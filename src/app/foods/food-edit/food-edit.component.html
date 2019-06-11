@@ -1,0 +1,68 @@
+<div class = "jumbotron">
+  <div class="container">
+    <div class="col-md-10 offset-md-3">
+      <form novalidate [formGroup] = "foodForm">
+        <h2 class="heading">Edit Food</h2>
+        <div class="form-group d-flex mb-2">
+          <label class="col-md-2 col-form-label" for="name">Food Name</label>
+          <div class="col-md-5">
+            <input class="form-control" id="name" [(ngModel)] = 'foodName' type="text" formControlName = "foodName"
+                   [ngClass] = "{'is-invalid': ((foodForm.get('foodName').touched ||
+            foodForm.get('foodName').dirty)) && (foodForm.get('foodName').invalid)}" />
+            <span class="invalid-feedback">
+            <span *ngIf = "foodForm.get('foodName').errors?.required">
+              Food Name is required
+            </span>
+          </span>
+          </div>
+        </div>
+
+        <div class="form-group d-flex mb-2">
+          <label class="col-md-2 col-form-label" for="code">Food Description</label>
+          <div class="col-md-5">
+            <input class="form-control" id="code" type="text" [(ngModel)] = 'foodDescription' formControlName = "foodDescription"
+                   [ngClass] = "{'is-invalid': ((foodForm.get('foodDescription').touched ||
+              foodForm.get('foodDescription').dirty)) && (foodForm.get('foodDescription').invalid)}" />
+            <span class="invalid-feedback">
+              <span *ngIf = "foodForm.get('foodDescription').errors?.required">
+               Food Description is required
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group d-flex mb-2">
+          <label class="col-md-2 col-form-label" for="image">Food Unit Price</label>
+          <div class="col-md-5">
+            <input class="form-control" id="image"  type="text" [(ngModel)] = 'foodUnitPrice' formControlName = "foodUnitPrice"
+                   [ngClass] = "{'is-invalid': ((foodForm.get('foodUnitPrice').touched ||
+                  foodForm.get('foodUnitPrice').dirty)) && (foodForm.get('foodUnitPrice').invalid)}" />
+            <span class="invalid-feedback">
+                  <span *ngIf = "foodForm.get('foodUnitPrice').errors?.required">
+                    Food unit price  is required
+                  </span>
+                </span>
+          </div>
+        </div>
+        <div class="form-group d-flex mb-2">
+          <label class="col-md-2 col-form-label" for="price">Number Of Food Unit</label>
+          <div class="col-md-5">
+            <input class="form-control" id="price" [(ngModel)] = 'numberofFood' type="number" formControlName = "numberofFood"
+                   [ngClass] = "{'is-invalid': ((foodForm.get('numberofFood').touched ||
+                    foodForm.get('numberofFood').dirty)) && (foodForm.get('numberofFood').invalid)}" />
+            <span class="invalid-feedback">
+                    <span *ngIf = "foodForm.get('numberofFood').errors?.required">
+                      Number of food units  is required
+                    </span>
+                  </span>
+          </div>
+        </div>
+        <button class="btn btn-primary edit-btn" (click)="updateFood()" [disabled] = "foodForm.invalid">
+          Update
+        </button>
+
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header">
+    <div class="row search">
+      <h2 class ="col-md-3">{{pageTitle}}</h2>
+      <div class = "col-md-6">
+        <input class="form-control" type="text" [(ngModel)] = 'listFilter' />
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Food Id</th>
+          <th>Food Name</th>
+          <th>Description</th>
+          <th>Unit Price</th>
+          <th>Number of Foods</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody >
+        <tr *ngFor= "let food of filteredFoods let i = index">
+          <td>{{i + 1}}</td>
+          <td><a [routerLink]="['/foods', food.foodId]">{{food.foodName}}</a></td>
+          <td>{{food.foodDescription}}</td>
+
+          <td>{{food.foodUnitPrice}}</td>
+          <td>{{food.numberofFood}}</td>
+          <td><button class="btn btn-primary edit-btn" [routerLink]="['/foods/edit',food.foodId]">Edit</button>
+            <button class="btn btn-danger"
+                    mwlConfirmationPopover
+                    [popoverTitle] = 'popoverTitle'
+                    [popoverMessage] = 'popoverMessage'
+                    placement="left"
+                    (confirm)="deleteFood(food.foodId)"
+                    (cancel) = 'cancelClicked = true'>Delete</button></td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

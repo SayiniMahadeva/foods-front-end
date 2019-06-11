@@ -1,0 +1,49 @@
+<div class='card'
+     *ngIf='food'>
+  <div class='card-header'>
+    {{pageTitle + ': ' + food.foodName}}
+  </div>
+
+  <div class='card-body'>
+    <div class='row'>
+      <div class='col-md-8'>
+        <div class='row'>
+          <div class='col-md-4'>Name:</div>
+          <div class='col-md-8'>{{food.foodName}}</div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-4'>Description:</div>
+          <div class='col-md-8'>{{food.foodDescription}}</div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-4'>Price:</div>
+          <div class='col-md-8'>{{food.foodUnitPrice|currency:'USD':'symbol'}}</div>
+        </div>
+
+        <div class='row'>
+          <div class='col-md-4'>Available:</div>
+          <div class='col-md-8'>{{food.numberofFood}}</div>
+        </div>
+
+      </div>
+
+      <div class='col-md-4'>
+        <img class='center-block img-responsive'
+             src="./assets/images/foods.jpg"
+             [style.width.px]='200'
+             [style.margin.px]='2'
+             [title]='food.foodName' >
+      </div>
+    </div>
+  </div>
+
+  <div class='card-footer'>
+    <button class='btn btn-outline-secondary'
+            (click)='onBack()'
+            style='width:80px'>
+      <i class='fa fa-chevron-left'></i> Back
+    </button>
+  </div>
+</div>
