@@ -53,11 +53,11 @@ export class FoodEditComponent implements OnInit {
     food.foodId = this.id;
     this.foodService.updateFood(this.id, food).subscribe(
       data => {
-        this.toastr.successToastr('Food ' + food.foodName + ' added!.', 'Success!');
+        this.toastr.successToastr('Food ' + food.foodName + ' updated!.', 'Success!');
         console.log(data);
+        this.router.navigate(['foods']);
+
       }
     );
-    this.router.navigate(['foods']);
   }
-
 }

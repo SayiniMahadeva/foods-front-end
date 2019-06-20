@@ -35,15 +35,14 @@ export class FoodAddComponent implements OnInit {
       response => {
         if (response.status === 200) {
           console.log('Success');
-          this.toastr.successToastr('Food ' + food.foodName + ' updated!.', 'Success!');
+          this.toastr.successToastr('Food ' + food.foodName + ' added!.', 'Success!');
+          this.router.navigate(['foods']);
         }
       },
       error => {
         console.error(error);
       }
     );
-
-    this.router.navigate(['foods']);
   }
 
 
